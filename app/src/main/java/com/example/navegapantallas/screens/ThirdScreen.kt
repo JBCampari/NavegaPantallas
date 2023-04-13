@@ -18,7 +18,7 @@ import com.example.navegapantallas.R
 import com.example.navegapantallas.navigation.AppScreens
 
 @Composable
-fun SecondScreen(navController: NavController) {
+fun ThirdScreen(navController: NavController) {
 
     Scaffold(
         topBar= {
@@ -26,22 +26,22 @@ fun SecondScreen(navController: NavController) {
                 Icon(imageVector = Icons.Default.ArrowBack,
                     contentDescription = "Arrow back",
                     modifier = Modifier.clickable{
-                        navController.popBackStack()
+                        navController.navigate(route = AppScreens.FirstScreen.route)
                     }
                 )
 
                 Spacer(modifier = Modifier.width(8.dp))
-                Text(text = "SecondScreen")
+                Text(text = "ThirdScreen")
             }
         }
     ) {
-        SecondBodyContent(navController)
+        ThirdBodyContent(navController)
     }
 
 }
 
 @Composable
-fun SecondBodyContent(navController: NavController) {
+fun ThirdBodyContent(navController: NavController) {
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -49,11 +49,11 @@ fun SecondBodyContent(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Text(text = "He Navegado")
+        Text(text = "He Navegado más")
         Button(onClick = {
-            navController.navigate(route = AppScreens.ThirdScreen.route)
+            navController.navigate(route = AppScreens.FirstScreen.route)
         }) {
-            Text(text = "Ir a Tres")
+            Text(text = "Volver Atrás")
         }
         Image(
             modifier = Modifier

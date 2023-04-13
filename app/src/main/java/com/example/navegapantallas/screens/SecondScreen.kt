@@ -1,23 +1,36 @@
 package com.example.navegapantallas.screens
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun SecondScreen(navController: NavController) {
 
-    Scaffold { padding ->
-        var modifier = Modifier.padding()
+    Scaffold(
+        topBar= {
+            TopAppBar {
+                Icon(imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Arrow back",
+                    modifier = Modifier.clickable{
+                        navController.popBackStack()
+                    }
+                )
+
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(text = "SecondScreen")
+            }
+        }
+    ) {
         SecondBodyContent(navController)
     }
 
@@ -33,7 +46,9 @@ fun SecondBodyContent(navController: NavController) {
     ) {
 
         Text(text = "He Navegado")
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = {
+            navController.popBackStack()
+        }) {
             Text(text = "Volver Atrás")
         }
 
